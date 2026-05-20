@@ -1,0 +1,108 @@
+.saved-page {
+    padding: 50px 0 70px;
+    background: #fffaf3;
+    min-height: 70vh;
+}
+
+.saved-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.saved-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    color: var(--deep-slate);
+    margin-bottom: 10px;
+}
+
+.saved-header p {
+    color: #6a7f60;
+    font-size: 1rem;
+}
+
+.saved-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.saved-place-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #eee1d2;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+.saved-place-img {
+    height: 210px;
+    overflow: hidden;
+}
+
+.saved-place-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.saved-place-body {
+    padding: 20px;
+}
+
+.saved-province {
+    color: var(--terracotta);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.saved-place-body h3 {
+    color: var(--deep-slate);
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+}
+
+.saved-place-body p {
+    color: #65775c;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.saved-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.saved-detail-btn,
+.saved-remove-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.saved-detail-btn {
+    background: var(--terracotta);
+    color: white;
+}
+
+.saved-remove-btn {
+    background: #fff3e8;
+    color: #9a3412;
+}
+
+@media (max-width: 1000px) {
+    .saved-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .saved-grid {
+        grid-template-columns: 1fr;
+    }
+}

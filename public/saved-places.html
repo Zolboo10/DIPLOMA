@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Миний хадгалсан газрууд</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/saved-places.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <h1>
+                    Монголоор аялахуй
+                    <img src="/images/mongolia (1).png" alt="Монгол газрын зураг" width="60">
+                </h1>
+                <p>түүх · соёл · байгалийн үзэсгэлэнт газар</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="index.html"><i class="fas fa-home"></i> Нүүр</a></li>
+                    <li><a href="features.html"><i class="fas fa-map"></i> Онцлох газрууд</a></li>
+                    <li><a href="plantrip.html"><i class="fas fa-compass"></i> Аялал төлөвлөгч</a></li>
+                </ul>
+            </nav>
+            <div class="auth-section" id="authSection">
+                <div id="loggedOutState" class="auth-buttons">
+                    <a href="login.html" class="auth-link login-link">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                    <a href="login.html" class="auth-link register-link">
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+                </div>
+                <div id="loggedInState" class="user-menu" style="display: none;">
+                    <button class="user-avatar" id="userMenuBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameDisplay">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="my-trips.html"><i class="fas fa-route"></i> Миний аялалууд</a>
+                        <a href="saved-places.html"><i class="fas fa-bookmark"></i> Хадгалсан газрууд</a>
+                        <hr>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Гарах</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<main class="saved-page">
+    <div class="container">
+        <div class="saved-header">
+            <h2><i class="fas fa-bookmark"></i> Хадгалсан газрууд</h2>
+        </div>
+
+        <div id="savedPlacesList" class="saved-grid"></div>
+    </div>
+</main>
+
+<script src="js/script.js"></script>
+<script src="js/saved-places.js"></script>
+</body>
+</html>

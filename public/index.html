@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Монголоор аялахуй</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <h1>
+                    Монголоор аялахуй
+                    <img src="/images/mongolia (1).png" alt="Монгол газрын зураг" width="60">
+                </h1>
+                <p>түүх · соёл · байгалийн үзэсгэлэнт газар</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="index.html"><i class="fas fa-home"></i> Нүүр</a></li>
+                    <li><a href="features.html"><i class="fas fa-map"></i> Онцлох газрууд</a></li>
+                    <li><a href="plantrip.html"><i class="fas fa-compass"></i> Аялал төлөвлөгч</a></li>
+                </ul>
+            </nav>
+            <div class="auth-section" id="authSection">
+                <div id="loggedOutState" class="auth-buttons">
+                    <a href="login.html" class="auth-link login-link">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                    <a href="login.html" class="auth-link register-link">
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+                </div>
+                <div id="loggedInState" class="user-menu" style="display: none;">
+                    <button class="user-avatar" id="userMenuBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameDisplay">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="my-trips.html"><i class="fas fa-route"></i> Миний аялалууд</a>
+                        <a href="saved-places.html"><i class="fas fa-bookmark"></i> Хадгалсан газрууд</a>
+                        <hr>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Гарах</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-slider" id="heroSlider">
+            <img class="slide active" id="heroImage" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Mongolia_%2835427009881%29.jpg" alt="Mongolia landscape">
+        </div>
+        
+        <div class="hero-content">
+            <h2 id="slideTitle">Говь цөлийн гайхамшиг</h2>
+            <p id="slideDesc"></p>
+            <a href="plantrip.html" class="btn btn-primary"><i class="fas fa-compass"></i> Аялал эхлүүлэх</a>
+        </div>
+        
+        <div class="slider-controls" id="sliderControls">
+            <div class="slider-dot active" data-index="0"></div>
+            <div class="slider-dot" data-index="1"></div>
+            <div class="slider-dot" data-index="2"></div>
+            <div class="slider-dot" data-index="3"></div>
+        </div>
+        
+        <div class="slider-arrow prev" id="prevSlide">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="slider-arrow next" id="nextSlide">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </section>
+
+    <section class="featured-preview-section">
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="featured-header">
+            <div>
+                <h2 class="section-title">
+                    Онцлох байгалийн үзэсгэлэнт газрууд
+                </h2>
+
+                <p class="section-subtitle">
+                    Монголын байгалийн шилдэг цогцолборууд
+                </p>
+            </div>
+
+            <a href="features.html" class="more-link">
+                More <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- GRID -->
+        <div class="featured-preview-grid">
+
+            <!-- CARD 1 -->
+            <div class="featured-preview-card">
+
+                <div class="featured-preview-image">
+                    <img src="/images/khuvsgul.jpg" alt="Хөвсгөл нуур">
+
+                    <span class="preview-badge">
+                        <i class="fas fa-map-pin"></i> Хөвсгөл
+                    </span>
+
+                    <span class="preview-category">
+                        <i class="fas fa-water"></i> Нуур
+                    </span>
+                </div>
+
+                <div class="featured-preview-content">
+
+                    <span class="preview-province">
+                        <i class="fas fa-location-dot"></i>
+                        Хөвсгөл аймаг
+                    </span>
+
+                    <h3>Хөвсгөл нуур</h3>
+
+                    <p>
+                        Монголын хамгийн том цэнгэг нуур,
+                        аялал жуулчлалын гол бүс.
+                    </p>
+
+                    <a href="location-detail.html?id=69cb822635470fcbf896e905"
+                       class="preview-btn">
+                        <i class="fas fa-info-circle"></i>
+                        Дэлгэрэнгүй
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="featured-preview-card">
+
+                <div class="featured-preview-image">
+                    <img src="/images/erdenezuu.jpg" alt="Эрдэнэ зуу хийд">
+
+                    <span class="preview-badge">
+                        <i class="fas fa-map-pin"></i> Өвөрхангай
+                    </span>
+
+                    <span class="preview-category">
+                        <i class="fas fa-landmark"></i>
+                        Түүхэн дурсгал
+                    </span>
+                </div>
+
+                <div class="featured-preview-content">
+
+                    <span class="preview-province">
+                        <i class="fas fa-location-dot"></i>
+                        Өвөрхангай аймаг
+                    </span>
+
+                    <h3>Эрдэнэ зуу хийд</h3>
+
+                    <p>
+                        Монголын анхны буддын хийдүүдийн нэг.
+                    </p>
+
+                    <a href="location-detail.html?id=69cb822635470fcbf896e906"class="preview-btn">
+                        <i class="fas fa-info-circle"></i>
+                        Дэлгэрэнгүй
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="featured-preview-card">
+
+                <div class="featured-preview-image">
+                    <img src="/images/govi3saikhan.jpg" alt="Говь гурван сайхан">
+
+                    <span class="preview-badge">
+                        <i class="fas fa-map-pin"></i> Өмнөговь
+                    </span>
+
+                    <span class="preview-category">
+                        <i class="fas fa-tree"></i>
+                        Байгалийн үзэсгэлэнт газар
+                    </span>
+                </div>
+
+                <div class="featured-preview-content">
+
+                    <span class="preview-province">
+                        <i class="fas fa-location-dot"></i>
+                        Өмнөговь аймаг
+                    </span>
+
+                    <h3>Говь гурван сайхан</h3>
+
+                    <p>
+                        Говийн үзэсгэлэнт уулс бүхий
+                        цогцолбор газар.
+                    </p>
+
+                    <a href="location-detail.html?id=69cb822635470fcbf896e907" class="preview-btn">
+                        <i class="fas fa-info-circle"></i>
+                        Дэлгэрэнгүй
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</div>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-logo">
+                <h2>Монголоор аялахуй<span>.</span></h2>
+                <p>Аялал төлөвлөлтийн систем.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Тусламж</h4>
+                <ul>
+                    <li><a href="#">Холбоо барих</a></li>
+                    <li><a href="#">Төсөл тухай</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p><i class="fas fa-envelope"></i> info@mongoloorayalahui.mn</p>
+            </div>
+        </div>
+
+        <div class="container copyright">
+            <p>© 2025 Монголоор аялахуй</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

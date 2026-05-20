@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Аялал төлөвлөгч | Монголоор аялахуй</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d97706">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/plantrip.css" />
+</head>
+
+<body>
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <h1>
+                Монголоор аялахуй
+                <img src="/images/mongolia (1).png" alt="Монгол газрын зураг" width="60" />
+            </h1>
+            <p>түүх · соёл · байгалийн үзэсгэлэнт газар</p>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Нүүр</a></li>
+                <li><a href="features.html"><i class="fas fa-map"></i> Онцлох газрууд</a></li>
+                <li class="active"><a href="plantrip.html"><i class="fas fa-compass"></i> Аялал төлөвлөгч</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-section" id="authSection">
+            <div id="loggedOutState" class="auth-buttons">
+                <a href="login.html" class="auth-link login-link"><i class="fas fa-sign-in-alt"></i></a>
+                <a href="login.html" class="auth-link register-link"><i class="fas fa-user-plus"></i></a>
+            </div>
+
+            <div id="loggedInState" class="user-menu" style="display: none;">
+                <button class="user-avatar" id="userMenuBtn" type="button">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userNameDisplay">User</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="my-trips.html"><i class="fas fa-route"></i> Миний аялалууд</a>
+                    <a href="saved-places.html"><i class="fas fa-bookmark"></i> Хадгалсан газрууд</a>
+                    <hr />
+                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Гарах</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="plantrip-main">
+    <div class="container main-grid">
+        <aside class="control-panel">
+            <div class="panel-card">
+                <h3><i class="fas fa-directions"></i> Чиглэл авах</h3>
+
+                <div class="mode-selector single-mode">
+                    <button class="mode-btn active" data-mode="DRIVING" type="button" disabled>
+                        <i class="fas fa-car"></i> Машин
+                    </button>
+                </div>
+
+                <div class="input-group">
+                    <label for="trip-days"><i class="fas fa-calendar-day"></i> Аяллын хоног</label>
+                    <input type="number" id="trip-days" min="1" max="30" value="1" placeholder="Хэдэн өдөр аялах вэ" />
+                </div>
+
+                <div class="input-group">
+                    <label for="smart-radius">
+                        <i class="fas fa-location-crosshairs"></i> SMART TRIP саналын зай
+                    </label>
+                    <select id="smart-radius">
+                        <option value="250">250 км дотор</option>
+                        <option value="200">200 км дотор</option>
+                        <option value="150">150 км дотор</option>
+                        <option value="100">100 км дотор</option>
+                        <option value="50">50 км дотор</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="start-input"><i class="fas fa-circle text-green"></i> Эхлэх цэг</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="start-input" placeholder="Ж: Улаанбаатар, Дархан, Хөвсгөл нуур" />
+                        <button type="button" id="use-my-location" class="icon-btn" title="Миний байршил">
+                            <i class="fas fa-location-dot"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="end-input"><i class="fas fa-circle text-red"></i> Очих цэг</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="end-input" placeholder="Ж: Хөвсгөл нуур, Тэрэлж, Хамрын хийд" />
+                        <button type="button" id="swap-points" class="icon-btn" title="Цэг солих">
+                            <i class="fas fa-arrow-up-arrow-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hint-box">
+                    Газрын нэр бичиж болно. Жишээ нь: “Хөвсгөл нуур”, “Тэрэлж”, “Хамрын хийд”. Мөн газрын зураг дээр 1 удаа дарвал “Эхлэх цэг”, 2 дахь удаа дарвал “Очих цэг” болно.
+                </div>
+
+                <button id="get-directions" class="btn-primary" type="button">
+                    <i class="fas fa-route"></i> Маршрут харах
+                </button>
+
+                <button id="save-trip" class="btn-secondary" style="margin-top: 10px; display: none;" type="button">
+                    <i class="fas fa-bookmark"></i> Маршрут хадгалах
+                </button>
+
+                <button id="new-trip" class="btn-new-trip" type="button">
+                    <i class="fas fa-plus"></i> Шинэ аялал төлөвлөх
+                 </button>
+
+                <div id="route-summary" class="route-summary" style="display: none;">
+                    <div class="summary-item">
+                        <i class="fas fa-road"></i>
+                        <span id="route-distance">-- км</span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="route-duration">-- мин</span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-calendar"></i>
+                        <span id="route-days">1 өдөр</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-card" id="routes-panel" style="display: none;">
+                <h3><i class="fas fa-code-branch"></i> Маршрутын мэдээлэл</h3>
+                <div id="route-options" class="route-options"></div>
+            </div>
+
+            <div class="panel-card" id="steps-panel" style="display: none;">
+                <h3><i class="fas fa-list-ol"></i> Чиглэл</h3>
+                <div id="directions-steps" class="directions-steps"></div>
+            </div>
+
+            <div class="panel-card" id="smart-trip-panel" style="display: none;">
+                <h3><i class="fas fa-wand-magic-sparkles"></i> SMART TRIP</h3>
+                <div class="smart-trip-meta" id="smart-trip-meta"></div>
+                <div id="smart-trip-results" class="smart-trip-results"></div>
+            </div>
+        </aside>
+
+        <section class="map-wrapper">
+            <div id="map"></div>
+
+            <div id="offline-banner" class="offline-banner">
+    ⚠️ Интернэтгүй горим
+</div>  
+
+
+            <div class="nearby-floating-panel" id="nearby-resorts-panel" style="display: none;">
+                <div class="nearby-header">
+                    <h3><i class="fas fa-campground"></i> Ойролцоох байрлах газар</h3>
+                    <button type="button" id="close-nearby-panel">&times;</button>
+                </div>
+                <p class="nearby-subtitle">Очих цэгээс 50 км доторх амралтын газар, жуулчны бааз</p>
+                <div id="nearby-resorts-list" class="nearby-resorts-list"></div>
+            </div>
+
+            <div class="map-controls">
+                <button id="zoom-in" class="map-ctrl" title="Ойртуулах" type="button"><i class="fas fa-plus"></i></button>
+                <button id="zoom-out" class="map-ctrl" title="Холдуулах" type="button"><i class="fas fa-minus"></i></button>
+                <button id="my-location-map" class="map-ctrl" title="Миний байршил" type="button"><i class="fas fa-location-dot"></i></button>
+                <button id="reset-map" class="map-ctrl" title="Анхны байрлал" type="button"><i class="fas fa-home"></i></button>
+            </div>
+
+            <div class="layers-control">
+                <button id="layers-btn" class="layers-btn" type="button">
+                    <i class="fas fa-layer-group"></i> Давхарга
+                </button>
+                <div id="layers-menu" class="layers-menu" style="display: none;">
+                    <button data-layer="roadmap" type="button">🗺️ Замын зураг</button>
+                    <button data-layer="satellite" type="button">🛰️ Хиймэл дагуул</button>
+                    <button data-layer="terrain" type="button">⛰️ Газар нуруу</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-logo">
+            <h2>Монголоор аялахуй<span>.</span></h2>
+            <p>Аялал төлөвлөлтийн систем.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Тусламж</h4>
+            <ul>
+                <li><a href="#">Холбоо барих</a></li>
+                <li><a href="#">Төсөл тухай</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p><i class="fas fa-envelope"></i> info@mongoloorayalahui.mn</p>
+        </div>
+    </div>
+
+    <div class="container copyright">
+        <p>© 2025 Монголоор аялахуй</p>
+    </div>
+</footer>
+
+<script>
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+
+    if (!token && navigator.onLine) {
+        alert("Та нэвтэрнэ үү!");
+        window.location.href = "login.html";
+    }
+
+    if (!token && !navigator.onLine) {
+        console.log("Offline горим: өмнө хадгалсан маршрут харах боломжтой.");
+    }
+</script>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/script.js"></script>
+<script src="js/plantrip.js"></script>
+
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("/public/service-worker.js", { scope: "/public/" })
+            .then(() => console.log("Service Worker ажиллаж байна"))
+            .catch((err) => console.log("SW error:", err));
+    });
+}
+</script>
+
+</body>
+</html>

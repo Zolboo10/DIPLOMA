@@ -1,0 +1,270 @@
+
+.hero-text-section {
+    padding: 40px 0 20px 0;
+    text-align: center;
+    color: #DBAE6C;
+}
+
+.hero-text-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+
+}
+
+.hero-text-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-map-section {
+
+    padding: 20px 0;
+    text-align: center;
+}
+
+.hero-map-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-map-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* GRID */
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+    margin: 30px 0 40px;
+}
+
+/* CARD */
+.location-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: 0.2s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-3px);
+}
+
+/* IMAGE */
+.location-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* BADGES */
+.location-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #c96b2c;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+}
+
+.location-category {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ffffff;
+    color: #444;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    border: 1px solid #ddd;
+}
+
+/* CONTENT */
+.location-content {
+    padding: 16px;
+}
+
+.location-province {
+    font-size: 0.75rem;
+    color: #c96b2c;
+    margin-bottom: 6px;
+}
+
+.location-content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.location-description {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+/* BUTTONS */
+.location-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-location {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.btn-primary-sm {
+    background: #c96b2c;
+    color: white;
+}
+
+.btn-primary-sm:hover {
+    background: #a9541f;
+}
+
+/* MAP SECTION (доод талын маркертай зураг) */
+.map-section {
+    background: #f4f3ef;
+    padding: 40px 0;
+}
+
+.map-content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.map-content h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.map-content p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* MAP BOX */
+.map-container {
+    max-width: 720px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* MARKER */
+.map-marker {
+    position: absolute;
+    cursor: pointer;
+}
+
+.map-marker i {
+    font-size: 1.4rem;
+    color: #c96b2c;
+}
+
+.map-marker:hover {
+    transform: scale(1.1);
+}
+
+.map-marker::after {
+    content: attr(data-province);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.map-marker:hover::after {
+    opacity: 1;
+}
+
+/* REMOVE HEAVY ANIMATION */
+.location-card {
+    animation: none;
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 30px 0 40px;
+}
+
+.location-img {
+    height: 200px;
+}
+
+.location-content h3 {
+    font-size: 1.2rem;
+}
+
+.location-description {
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero-text-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text-section {
+        padding: 60px 0 40px 0;
+    }
+
+    .hero-text-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-text-content p {
+        font-size: 1rem;
+    }
+
+    .locations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-map-section {
+        padding: 20px 0;
+    }
+}

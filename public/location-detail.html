@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Газрын дэлгэрэнгүй | Монголоор аялахуй</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/location-detail.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+</head>
+<body>
+
+<header>
+        <div class="container header-inner">
+            <div class="logo">
+                <h1>
+                    Монголоор аялахуй
+                    <img src="/images/mongolia (1).png" alt="Монгол газрын зураг" width="60">
+                </h1>
+                <p>түүх · соёл · байгалийн үзэсгэлэнт газар</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Нүүр</a></li>
+                    <li class="active"><a href="features.html"><i class="fas fa-map"></i> Онцлох газрууд</a></li>
+                    <li><a href="plantrip.html"><i class="fas fa-compass"></i> Аялал төлөвлөгч</a></li>
+                </ul>
+            </nav>
+            <div class="auth-section" id="authSection">
+                <div id="loggedOutState" class="auth-buttons">
+                    <a href="login.html" class="auth-link login-link">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                    <a href="login.html" class="auth-link register-link">
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+                </div>
+                <div id="loggedInState" class="user-menu" style="display: none;">
+                    <button class="user-avatar" id="userMenuBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameDisplay">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="my-trips.html"><i class="fas fa-route"></i> Миний аялалууд</a>
+                        <a href="saved-places.html"><i class="fas fa-bookmark"></i> Хадгалсан газрууд</a>
+                        <hr>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Гарах</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<main class="detail-page">
+  <div id="loading" class="loading">
+    <i class="fas fa-spinner fa-spin"></i>
+    <span>Мэдээлэл ачааллаж байна...</span>
+  </div>
+
+  <div id="error-message" class="error-message">
+    <i class="fas fa-triangle-exclamation"></i>
+    <span></span>
+  </div>
+
+  <section id="detail-content" class="detail-content" style="display:none;">
+    <div class="detail-hero">
+      <img id="place-image" src="" alt="Газрын зураг" />
+      <div class="detail-overlay">
+        <span id="place-province" class="province-badge"></span>
+        <h1 id="place-name"></h1>
+      </div>
+    </div>
+
+    <div class="container detail-body">
+      <div class="detail-info">
+        <h2><i class="fas fa-circle-info"></i> Газрын тухай</h2>
+        <p id="place-description"></p>
+
+        <div class="location-map-section">
+  <h2>
+    <i class="fas fa-map-location-dot"></i>
+    Газрын байршил
+  </h2>
+
+  <div id="detail-map"></div>
+</div>
+
+        <div class="detail-actions">
+          <button id="save-btn" class="btn-save">
+            <i class="fas fa-bookmark"></i> Хадгалах
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/script.js"></script>
+<script src="js/location-detail.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "diplom",
+  "version": "1.0.0",
+  "description": "Mongol Travel - Authentication Backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.23.0",
+    "nodemailer": "^8.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

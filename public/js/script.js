@@ -1,4 +1,4 @@
-window.API_BASE_URL = 'http://127.0.0.1:5000/api';
+window.API_BASE_URL = 'https://diploma-3ssv.onrender.com/api';
 
 function getToken() {
     return localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -93,7 +93,7 @@ async function savePlace(placeId) {
   }
 
   try {
-    const res = await fetch(`http://127.0.0.1:5000/api/favorites/${placeId}`, {
+    const res = await fetch(`${window.API_BASE_URL}/favorites/${placeId}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`
